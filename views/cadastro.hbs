@@ -1,5 +1,5 @@
 <H2 class='p-2'>Cadastro</H2>
-<form action='http://localhost:3000/products/create' method='post' class='p-2' id='formulario'>
+<form action='/cadastro/send' method='post' class='p-2' id='formulario'>
     <div class='input-group mb-3'>
         <span class='input-group-text'>Nome do Produto</span>
         <input type='text' class='form-control' placeholder='Digite o nome do produto' name='name' required />
@@ -10,5 +10,5 @@
         <span class='input-group-text'>Valor</span>
         <input type='number' class='form-control' placeholder='Digite o valor do produto' name='price' required />
     </div>
-    <button class='btn btn-primary'>Cadastrar</button>
+    <button type='submit' class='btn btn-primary'>Cadastrar</button>
 </form>

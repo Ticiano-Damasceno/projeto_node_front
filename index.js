@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbl = require('express-handlebars');
+const axios = require('axios');
 
 const app = express();
 const hbs = exphbl.create({ extname: 'hbs' });
@@ -18,6 +19,24 @@ app.get('/', (req, res) => {
 
 app.get('/cadastro', (req, res) => {
     res.status(200).render('cadastro');
+});
+
+app.post('/cadastro/send', (req, res) => {
+    const data = req.body;
+    axios.post('http://localhost:3000/create', data).then((d) => {
+        console.log(d);
+    });
+    res.status(200).redirect('/');
+});
+
+app.get('/itenscadastrados', async (req, res) => {
+    try {
+        const response = await axios.post('http://localhost:3000/products/all');
+        res.status(200).render('produtos', { produtos: response.data['produtos'] });
+    } catch (err) {
+        console.error('Error', err);
+        res.status(500).json({ error: err });
+    }
 });
 
 app.listen(5000);

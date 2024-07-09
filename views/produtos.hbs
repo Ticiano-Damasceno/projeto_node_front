@@ -1,0 +1,32 @@
+<div class="m-2 w-75">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Descrição</th>
+                <th>Editar</th>
+                <th>Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each produtos}}
+                <tr>
+                    <td>{{name}}</td>  
+                    <td>{{quantity}}</td> 
+                    <td>{{price}}</td> 
+                    <td>{{description}}</td> 
+                    {{!-- <td><p><a class="link-underline-primary" href="/aluno/{{id}}">Editar</a></p></td>  --}}
+                    <td><p><a class="link-underline-primary" href="#">Editar</a></p></td> 
+                    <td>
+                        {{!-- <form action="/excluir/{{id}}" method="post"> --}}
+                        <form action="#" method="post">
+                            <button class="btn btn-primary">Excluir</button>
+                        </form>
+                    </td> 
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
