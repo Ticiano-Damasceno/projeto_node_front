@@ -13,6 +13,12 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.static('node_modules/bootstrap/dist/'));
 
+app.post('/delete/:uuid', (req, res) => {
+    const uuid = req.params.uuid;
+    axios.delete(`http://localhost:3000/products/delete/${uuid}`);
+    res.status(200).redirect('/itenscadastrados');
+});
+
 app.get('/', (req, res) => {
     res.status(200).render('home');
 });
@@ -22,10 +28,12 @@ app.get('/cadastro', (req, res) => {
 });
 
 app.post('/cadastro/send', (req, res) => {
+    console.log(req.body);
     const data = req.body;
-    axios.post('http://localhost:3000/create', data).then((d) => {
-        console.log(d);
-    });
+    axios
+        .post('http://localhost:3000/products/create', data)
+        .then()
+        .catch((err) => console.log(err));
     res.status(200).redirect('/');
 });
 
